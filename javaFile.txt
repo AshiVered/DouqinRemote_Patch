@@ -1,0 +1,637 @@
+//
+// Decompiled by Jadx - 2246ms
+//
+package com.duoqin.remote.activity;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.duoqin.remote.app.RemoteApp;
+import com.duoqin.remote.fragments.FragmentAddDevice;
+import com.duoqin.remote.fragments.FragmentAddDeviceAC;
+import com.duoqin.remote.fragments.FragmentAddDeviceOthers;
+import com.duoqin.remote.fragments.FragmentAddDeviceSTB;
+import com.duoqin.remote.fragments.FragmentBase;
+import com.duoqin.remote.fragments.FragmentDeviceBrandList;
+import com.duoqin.remote.fragments.FragmentDeviceChooseCity;
+import com.duoqin.remote.fragments.FragmentDeviceTypeList;
+import com.duoqin.remote.fragments.FragmentKeyBoard;
+import com.duoqin.remote.fragments.FragmentKeyBoardAC;
+import com.duoqin.remote.fragments.FragmentKeyBoardAirCleaner;
+import com.duoqin.remote.fragments.FragmentKeyBoardBox;
+import com.duoqin.remote.fragments.FragmentKeyBoardDVD;
+import com.duoqin.remote.fragments.FragmentKeyBoardFan;
+import com.duoqin.remote.fragments.FragmentKeyBoardLight;
+import com.duoqin.remote.fragments.FragmentKeyBoardPA;
+import com.duoqin.remote.fragments.FragmentKeyBoardPRO;
+import com.duoqin.remote.fragments.FragmentKeyBoardSLR;
+import com.duoqin.remote.fragments.FragmentKeyBoardSTB;
+import com.duoqin.remote.fragments.FragmentKeyBoardTV;
+import com.duoqin.remote.fragments.FragmentKeyBoardWaterHeater;
+import com.duoqin.remote.fragments.FragmentRegisteredDevices;
+import com.duoqin.remote.fragments.FragmentSettings;
+import com.duoqin.ui.FeatureBarHelper;
+import com.kookong.app.data.BrandList;
+import java.util.ArrayList;
+import java.util.List;
+import p;
+
+public class RemoteActivity extends FragmentActivity implements p.a {
+    private FragmentRegisteredDevices b;
+    private FragmentKeyBoard c;
+    private FragmentDeviceTypeList d;
+    private FragmentDeviceBrandList e;
+    private FragmentAddDevice f;
+    private FragmentSettings g;
+    private FragmentDeviceChooseCity h;
+    private FeatureBarHelper j;
+    private TextView k;
+    private View l;
+    private View m;
+    private ImageView n;
+    private ImageView o;
+    private y p;
+    private int q;
+    private ArrayList<Integer> a = new ArrayList<>();
+    private FragmentBase[] i = new FragmentBase[7];
+
+    /* JADX WARN: Multi-variable type inference failed */
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        if (RemoteApp.b()) {
+            setTheme(0x7f0b0001);
+        } else {
+            setTheme(0x7f0b0000);
+        }
+        if (i()) {
+            if (RemoteApp.b()) {
+                setContentView(0x7f070001);
+            } else {
+                setContentView(0x7f070000);
+            }
+            this.k = (TextView) findViewById(0x7f060043);
+            this.l = findViewById(0x7f060002);
+            this.j = findViewById(0x7f060011);
+            if (this.j != null) {
+                this.j.setActivity(this);
+            }
+            this.m = findViewById(0x7f060020);
+            this.n = (ImageView) findViewById(0x7f060045);
+            this.o = (ImageView) findViewById(0x7f060046);
+            if (this.n != null) {
+                this.n.setOnClickListener(new RemoteActivity$1(this));
+            }
+            if (this.o != null) {
+                this.o.setOnClickListener(new RemoteActivity$2(this));
+            }
+            if (bundle != null) {
+                Log.d("RemoteActivity", "savedInstanceState not null");
+                this.a = bundle.getIntegerArrayList("state_fragment_stack");
+            }
+            if (this.a == null || this.a.isEmpty()) {
+                k();
+                Log.d("RemoteActivity", "onCreate, has no saved state, to set fragments as normal");
+            } else {
+                l();
+                Log.d("RemoteActivity", "onCreate, has saved state, fragments stack is " + this.a + ", to get fragments: " + this.i);
+            }
+            if (!w.a().a("shared_pref_statement_confirmed", false)) {
+                j();
+            }
+            if (Build.VERSION.SDK_INT >= 29) {
+                this.p = new y(this);
+            }
+        }
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    protected void onStart() {
+        super.onStart();
+    }
+
+    protected void onStop() {
+        super.onStop();
+    }
+
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putIntegerArrayList("state_fragment_stack", this.a);
+    }
+
+    public void onBackPressed() {
+        int p = p();
+        if (p != -1) {
+            if (this.i[p] != null ? this.i[p].f() : false) {
+                return;
+            }
+            if (n() != 1) {
+                super.onBackPressed();
+                return;
+            } else {
+                finish();
+                return;
+            }
+        }
+        finish();
+    }
+
+    public void a(int i) {
+        if (i != p()) {
+            return;
+        }
+        int o = o();
+        if (o != -1) {
+            this.i[o] = null;
+        }
+        int p = p();
+        if (p == -1 || this.i[p] == null) {
+            return;
+        }
+        this.i[p].x();
+    }
+
+    public void a() {
+        onBackPressed();
+    }
+
+    public View b() {
+        return this.m;
+    }
+
+    public View c() {
+        if (this.j != null) {
+            return this.j.getAnchor();
+        }
+        return null;
+    }
+
+    public void a(String str) {
+        if (this.k == null || str == null) {
+            return;
+        }
+        this.k.setText(str);
+    }
+
+    public void a(int i, int i2, int i3, int i4, int i5, int i6) {
+        if (this.j == null) {
+            return;
+        }
+        if (i == -1 && i2 == -1 && i3 == -1 && i4 == -1 && i5 == -1 && i6 == -1) {
+            this.j.b();
+        } else {
+            this.j.a();
+        }
+        if (this.j != null) {
+            if (i == -1 && i2 == -1) {
+                this.j.c();
+            } else {
+                if (i != -1) {
+                    this.j.setLeftText(i);
+                }
+                if (i2 != -1) {
+                    this.j.setLeftIcon(i2);
+                }
+            }
+            if (i3 == -1 && i4 == -1) {
+                this.j.d();
+            } else {
+                if (i3 != -1) {
+                    this.j.setCenterText(i3);
+                }
+                if (i4 != -1) {
+                    this.j.setCenterIcon(i4);
+                }
+            }
+            if (i5 == -1 && i6 == -1) {
+                this.j.e();
+                return;
+            }
+            if (i5 != -1) {
+                this.j.setRightText(i5);
+            }
+            if (i6 != -1) {
+                this.j.setRightIcon(i6);
+            }
+        }
+    }
+
+    public void a(int i, int i2) {
+        if (this.n != null) {
+            if (i != -1) {
+                this.n.setImageResource(i);
+                this.n.setVisibility(0);
+            } else {
+                this.n.setVisibility(4);
+            }
+        }
+        if (this.o != null) {
+            if (i2 != -1) {
+                this.o.setImageResource(i2);
+                this.o.setVisibility(0);
+            } else {
+                this.o.setVisibility(4);
+            }
+        }
+    }
+
+    public void b(int i) {
+        if (this.l != null) {
+            this.l.setPadding(0, 0, 0, i);
+        }
+    }
+
+    public void d() {
+        if (this.p != null) {
+            this.p.a();
+        }
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    private void h() {
+        Toast.makeText((Context) this, 0x7f0a004a, 1).show();
+        Log.e("RemoteActivity", getString(0x7f0a004a));
+        finish();
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    private boolean i() {
+        int i;
+        String a = aa.a(this, "ro.product.manufacturer");
+        if (TextUtils.isEmpty(a) || !"DuoQin".equalsIgnoreCase(a)) {
+            Log.i("RemoteActivity", "check error 1");
+            h();
+            return false;
+        }
+        String a2 = aa.a(this, "ro.duoqin.ota.tag");
+        if (TextUtils.isEmpty(a2)) {
+            Log.i("RemoteActivity", "check error 11");
+            h();
+            return false;
+        }
+        if (a2.toLowerCase().contains("f22pro_oversea")) {
+            try {
+                i = Settings.Secure.getInt(getContentResolver(), "DUOQIN_PRODUCT");
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+                i = 0;
+            }
+            if (i == 1) {
+                return true;
+            }
+            Log.i("RemoteActivity", "check error 22");
+            h();
+            return false;
+        }
+        if (TextUtils.isEmpty(a2) || (!a2.toLowerCase().contains("f22") && !a2.toLowerCase().contains("qin3"))) {
+            Log.i("RemoteActivity", "check error 2");
+            h();
+            return false;
+        }
+        PackageManager packageManager = getPackageManager();
+        new Intent("android.intent.action.MAIN", (Uri) null).addCategory("android.intent.category.HOME");
+        Intent intent = new Intent("android.intent.action.MAIN", (Uri) null);
+        intent.addCategory("android.intent.category.LAUNCHER");
+        List<ResolveInfo> queryIntentActivities = packageManager.queryIntentActivities(intent, 512);
+        Intent intent2 = new Intent("com.duoqin.payservice.pay");
+        intent2.addCategory("android.intent.category.DEFAULT");
+        List<ResolveInfo> queryIntentActivities2 = packageManager.queryIntentActivities(intent2, 512);
+        String packageName = getPackageName();
+        String substring = packageName.substring(0, packageName.lastIndexOf(".") + 1);
+        ArrayList arrayList = new ArrayList();
+        for (ResolveInfo resolveInfo : queryIntentActivities2) {
+            if (resolveInfo.activityInfo.name != null) {
+                arrayList.add(resolveInfo.activityInfo.name);
+            }
+        }
+        if (arrayList.isEmpty()) {
+            Log.i("RemoteActivity", "check error 3");
+            h();
+            return false;
+        }
+        ArrayList arrayList2 = new ArrayList();
+        arrayList2.add(substring + "payservice.activity.PaymentActivity");
+        for (int i2 = 0; i2 < arrayList2.size(); i2++) {
+            if (!arrayList.contains(arrayList2.get(i2))) {
+                Log.i("RemoteActivity", "check error 4");
+                h();
+                return false;
+            }
+        }
+        ArrayList arrayList3 = new ArrayList();
+        for (ResolveInfo resolveInfo2 : queryIntentActivities) {
+            if (resolveInfo2.activityInfo.name != null) {
+                arrayList3.add(resolveInfo2.activityInfo.name);
+            }
+        }
+        if (arrayList3.isEmpty()) {
+            Log.i("RemoteActivity", "check error 5");
+            h();
+            return false;
+        }
+        ArrayList arrayList4 = new ArrayList();
+        arrayList4.add(substring + "qweather.activity.WeatherActivity");
+        arrayList4.add(substring + "translator.ui.TranslatorMainActivity");
+        arrayList4.add(substring + "syncassistant.ui.MainActivity");
+        arrayList4.add("com.marsqin.activity.MarsQinSplashActivity");
+        arrayList4.add(substring + "guardapp.activity.ActivityQinGuard");
+        for (int i3 = 0; i3 < arrayList4.size(); i3++) {
+            if (!arrayList3.contains(arrayList4.get(i3))) {
+                Log.i("RemoteActivity", "check error 6");
+                h();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    private void j() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(0x7f0a0043).setNegativeButton(0x7f0a0045, (DialogInterface.OnClickListener) new RemoteActivity$4(this)).setPositiveButton(0x7f0a0044, (DialogInterface.OnClickListener) new RemoteActivity$3(this));
+        builder.setCancelable(false);
+        builder.show();
+    }
+
+    private void k() {
+        e();
+    }
+
+    private void l() {
+        ArrayList arrayList = (ArrayList) getSupportFragmentManager().getFragments();
+        for (int i = 0; i < arrayList.size(); i++) {
+            try {
+                FragmentBase fragmentBase = (Fragment) arrayList.get(i);
+                if (fragmentBase != null) {
+                    int parseInt = Integer.parseInt(fragmentBase.getTag());
+                    Log.d("RemoteActivity", "reGetFragments, index = " + parseInt + ", fragment = " + fragmentBase);
+                    switch (parseInt) {
+                        case 0:
+                            this.b = (FragmentRegisteredDevices) fragmentBase;
+                            break;
+                        case 1:
+                            this.c = (FragmentKeyBoard) fragmentBase;
+                            break;
+                        case 2:
+                            this.d = (FragmentDeviceTypeList) fragmentBase;
+                            break;
+                        case 3:
+                            this.e = (FragmentDeviceBrandList) fragmentBase;
+                            break;
+                        case 4:
+                            this.f = (FragmentAddDevice) fragmentBase;
+                            break;
+                        case 5:
+                            this.g = (FragmentSettings) fragmentBase;
+                            break;
+                        case 6:
+                            this.h = (FragmentDeviceChooseCity) fragmentBase;
+                            break;
+                    }
+                    this.i[parseInt] = fragmentBase;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
+
+    public void c(int i) {
+        Fragment fragment;
+        switch (i) {
+            case 0:
+                this.b = new FragmentRegisteredDevices();
+                fragment = this.b;
+                break;
+            case 1:
+                switch (this.q) {
+                    case 1:
+                        this.c = new FragmentKeyBoardSTB();
+                        break;
+                    case 2:
+                        this.c = new FragmentKeyBoardTV();
+                        break;
+                    case 3:
+                        this.c = new FragmentKeyBoardBox();
+                        break;
+                    case 4:
+                        this.c = new FragmentKeyBoardDVD();
+                        break;
+                    case 5:
+                        this.c = new FragmentKeyBoardAC();
+                        break;
+                    case 6:
+                        this.c = new FragmentKeyBoardPRO();
+                        break;
+                    case 7:
+                        this.c = new FragmentKeyBoardPA();
+                        break;
+                    case 8:
+                        this.c = new FragmentKeyBoardFan();
+                        break;
+                    case 9:
+                        this.c = new FragmentKeyBoardSLR();
+                        break;
+                    case 10:
+                        this.c = new FragmentKeyBoardLight();
+                        break;
+                    case 11:
+                        this.c = new FragmentKeyBoardAirCleaner();
+                        break;
+                    case 12:
+                        this.c = new FragmentKeyBoardWaterHeater();
+                        break;
+                }
+                fragment = this.c;
+                break;
+            case 2:
+                this.d = new FragmentDeviceTypeList();
+                fragment = this.d;
+                break;
+            case 3:
+                this.e = new FragmentDeviceBrandList();
+                fragment = this.e;
+                break;
+            case 4:
+                int i2 = this.q;
+                if (i2 != 1) {
+                    if (i2 == 5) {
+                        this.f = new FragmentAddDeviceAC();
+                    } else {
+                        this.f = new FragmentAddDeviceOthers();
+                    }
+                } else if (x.a(this.q)) {
+                    this.f = new FragmentAddDeviceSTB();
+                } else {
+                    this.f = new FragmentAddDeviceOthers();
+                }
+                fragment = this.f;
+                break;
+            case 5:
+                this.g = new FragmentSettings();
+                fragment = this.g;
+                break;
+            case 6:
+                this.h = new FragmentDeviceChooseCity();
+                fragment = this.h;
+                break;
+            default:
+                fragment = null;
+                break;
+        }
+        if (fragment != null) {
+            this.i[i] = fragment;
+            FragmentTransaction beginTransaction = getSupportFragmentManager().beginTransaction();
+            if (i != 0) {
+                beginTransaction.setCustomAnimations(0x7f010002, 0x7f010001, 0x7f010000, 0x7f010003);
+            }
+            beginTransaction.replace(0x7f06001b, fragment, String.valueOf(i));
+            beginTransaction.addToBackStack(String.valueOf(i));
+            beginTransaction.commit();
+        }
+        int p = p();
+        if (p != -1 && this.i[p] != null) {
+            this.i[p].y();
+        }
+        e(i);
+    }
+
+    private void m() {
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        supportFragmentManager.popBackStackImmediate(String.valueOf(0), 1);
+        supportFragmentManager.beginTransaction().commit();
+        if (this.a == null) {
+            this.a = new ArrayList<>();
+        } else {
+            this.a.clear();
+        }
+    }
+
+    private void e(int i) {
+        this.a.add(Integer.valueOf(i));
+    }
+
+    private int n() {
+        return this.a.size();
+    }
+
+    private int o() {
+        if (this.a.size() > 0) {
+            return this.a.remove(this.a.size() - 1).intValue();
+        }
+        return -1;
+    }
+
+    private int p() {
+        if (this.a.size() > 0) {
+            return this.a.get(this.a.size() - 1).intValue();
+        }
+        return -1;
+    }
+
+    public FragmentBase q() {
+        int p = p();
+        if (this.i == null || p < 0 || p >= this.i.length) {
+            return null;
+        }
+        return this.i[p];
+    }
+
+    public void e() {
+        m();
+        c(0);
+    }
+
+    public void f() {
+        c(5);
+    }
+
+    public void a(s sVar) {
+        this.q = sVar.b;
+        c(1);
+        this.c.a(sVar);
+    }
+
+    public void g() {
+        c(2);
+    }
+
+    public void d(int i) {
+        if (x.a(i)) {
+            c(6);
+        } else {
+            c(3);
+            this.e.a(i, -1);
+        }
+    }
+
+    public void b(int i, int i2) {
+        if (i == 1) {
+            c(3);
+            this.e.a(i, i2);
+        }
+    }
+
+    public void a(int i, BrandList.Brand brand) {
+        this.q = i;
+        c(4);
+        this.f.a(i, brand);
+    }
+
+    public void a(int i, int i2, int i3, String str) {
+        if (i == 1) {
+            this.q = i;
+            c(4);
+            this.f.a(i, i2, i3, str);
+        }
+    }
+
+    public void a(int i, String str, String str2) {
+        if (i == 1) {
+            this.q = i;
+            c(4);
+            this.f.a(i, str, str2);
+        }
+    }
+
+    public boolean dispatchKeyEvent(KeyEvent keyEvent) {
+        return super.dispatchKeyEvent(keyEvent);
+    }
+
+    public boolean onKeyDown(int i, KeyEvent keyEvent) {
+        int p = p();
+        if (this.i[p] != null) {
+            return this.i[p].a(i, keyEvent) || super.onKeyDown(i, keyEvent);
+        }
+        return super.onKeyDown(i, keyEvent);
+    }
+
+    public boolean onKeyUp(int i, KeyEvent keyEvent) {
+        int p = p();
+        if (this.i[p] != null) {
+            return this.i[p].b(i, keyEvent) || super.onKeyUp(i, keyEvent);
+        }
+        return super.onKeyUp(i, keyEvent);
+    }
+}

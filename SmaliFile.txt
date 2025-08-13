@@ -1,0 +1,1971 @@
+.class public Lcom/duoqin/remote/activity/RemoteActivity;
+.super Landroid/support/v4/app/FragmentActivity;
+.source "RemoteActivity.java"
+
+# interfaces
+.implements Lp$a;
+
+
+# instance fields
+.field private a:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList<",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private b:Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;
+
+.field private c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+.field private d:Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;
+
+.field private e:Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+.field private f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+.field private g:Lcom/duoqin/remote/fragments/FragmentSettings;
+
+.field private h:Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;
+
+.field private i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+.field private j:Lcom/duoqin/ui/FeatureBarHelper;
+
+.field private k:Landroid/widget/TextView;
+
+.field private l:Landroid/view/View;
+
+.field private m:Landroid/view/View;
+
+.field private n:Landroid/widget/ImageView;
+
+.field private o:Landroid/widget/ImageView;
+
+.field private p:Ly;
+
+.field private q:I
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 2
+
+    .line 62
+    invoke-direct {p0}, Landroid/support/v4/app/FragmentActivity;-><init>()V
+
+    .line 81
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    const/4 v0, 0x7
+
+    .line 89
+    new-array v0, v0, [Lcom/duoqin/remote/fragments/FragmentBase;
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    return-void
+.end method
+
+.method static synthetic a(Lcom/duoqin/remote/activity/RemoteActivity;)Lcom/duoqin/remote/fragments/FragmentBase;
+    .registers 1
+
+    .line 62
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->q()Lcom/duoqin/remote/fragments/FragmentBase;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method private e(I)V
+    .registers 2
+
+    .line 656
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    invoke-virtual {p0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    return-void
+.end method
+
+.method private h()V
+    .registers 3
+
+    const v0, 0x7f0a004a
+
+    const/4 v1, 0x1
+
+    .line 345
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/widget/Toast;->show()V
+
+    const-string v1, "RemoteActivity"
+
+    .line 346
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 347
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->finish()V
+
+    return-void
+.end method
+
+.method private i()Z
+    .registers 2
+	const/4 v0, 0x1
+    return v0
+.end method
+
+.method private j()V
+    .registers 5
+
+    .line 461
+    new-instance v0, Landroid/app/AlertDialog$Builder;
+
+    invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    const v1, 0x7f0a0043
+
+    .line 462
+    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v1
+
+    new-instance v2, Lcom/duoqin/remote/activity/RemoteActivity$4;
+
+    invoke-direct {v2, p0}, Lcom/duoqin/remote/activity/RemoteActivity$4;-><init>(Lcom/duoqin/remote/activity/RemoteActivity;)V
+
+    const v3, 0x7f0a0045
+
+    .line 463
+    invoke-virtual {v1, v3, v2}, Landroid/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    move-result-object v1
+
+    new-instance v2, Lcom/duoqin/remote/activity/RemoteActivity$3;
+
+    invoke-direct {v2, p0}, Lcom/duoqin/remote/activity/RemoteActivity$3;-><init>(Lcom/duoqin/remote/activity/RemoteActivity;)V
+
+    const p0, 0x7f0a0044
+
+    .line 469
+    invoke-virtual {v1, p0, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    const/4 p0, 0x0
+
+    .line 475
+    invoke-virtual {v0, p0}, Landroid/app/AlertDialog$Builder;->setCancelable(Z)Landroid/app/AlertDialog$Builder;
+
+    .line 476
+    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+
+    return-void
+.end method
+
+.method private k()V
+    .registers 1
+
+    .line 480
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->e()V
+
+    return-void
+.end method
+
+.method private l()V
+    .registers 8
+
+    .line 484
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->getSupportFragmentManager()Landroid/support/v4/app/FragmentManager;
+
+    move-result-object v0
+
+    .line 485
+    invoke-virtual {v0}, Landroid/support/v4/app/FragmentManager;->getFragments()Ljava/util/List;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/ArrayList;
+
+    const/4 v1, 0x0
+
+    .line 487
+    :goto_b
+    :try_start_b
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    if-ge v1, v2, :cond_7a
+
+    .line 488
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/support/v4/app/Fragment;
+
+    if-nez v2, :cond_1a
+
+    goto :goto_73
+
+    .line 492
+    :cond_1a
+    invoke-virtual {v2}, Landroid/support/v4/app/Fragment;->getTag()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v3}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v3
+
+    const-string v4, "RemoteActivity"
+
+    .line 493
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "reGetFragments, index = "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v6, ", fragment = "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    packed-switch v3, :pswitch_data_7c
+
+    goto :goto_6d
+
+    .line 514
+    :pswitch_44  #0x6
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->h:Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;
+
+    goto :goto_6d
+
+    .line 511
+    :pswitch_4a  #0x5
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentSettings;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->g:Lcom/duoqin/remote/fragments/FragmentSettings;
+
+    goto :goto_6d
+
+    .line 508
+    :pswitch_50  #0x4
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    goto :goto_6d
+
+    .line 505
+    :pswitch_56  #0x3
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->e:Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    goto :goto_6d
+
+    .line 502
+    :pswitch_5c  #0x2
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->d:Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;
+
+    goto :goto_6d
+
+    .line 499
+    :pswitch_62  #0x1
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_6d
+
+    .line 496
+    :pswitch_68  #0x0
+    move-object v4, v2
+
+    check-cast v4, Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;
+
+    iput-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->b:Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;
+
+    .line 519
+    :goto_6d
+    iget-object v4, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    check-cast v2, Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aput-object v2, v4, v3
+    :try_end_73
+    .catch Ljava/lang/Exception; {:try_start_b .. :try_end_73} :catch_76
+
+    :goto_73
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_b
+
+    :catch_76
+    move-exception p0
+
+    .line 522
+    invoke-virtual {p0}, Ljava/lang/Exception;->printStackTrace()V
+
+    :cond_7a
+    return-void
+
+    nop
+
+    :pswitch_data_7c
+    .packed-switch 0x0
+        :pswitch_68  #00000000
+        :pswitch_62  #00000001
+        :pswitch_5c  #00000002
+        :pswitch_56  #00000003
+        :pswitch_50  #00000004
+        :pswitch_4a  #00000005
+        :pswitch_44  #00000006
+    .end packed-switch
+.end method
+
+.method private m()V
+    .registers 4
+
+    .line 643
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->getSupportFragmentManager()Landroid/support/v4/app/FragmentManager;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    .line 645
+    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    const/4 v2, 0x1
+
+    .line 644
+    invoke-virtual {v0, v1, v2}, Landroid/support/v4/app/FragmentManager;->popBackStackImmediate(Ljava/lang/String;I)Z
+
+    .line 646
+    invoke-virtual {v0}, Landroid/support/v4/app/FragmentManager;->beginTransaction()Landroid/support/v4/app/FragmentTransaction;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/support/v4/app/FragmentTransaction;->commit()I
+
+    .line 648
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    if-nez v0, :cond_20
+
+    .line 649
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    goto :goto_25
+
+    .line 651
+    :cond_20
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {p0}, Ljava/util/ArrayList;->clear()V
+
+    :goto_25
+    return-void
+.end method
+
+.method private n()I
+    .registers 1
+
+    .line 660
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result p0
+
+    return p0
+.end method
+
+.method private o()I
+    .registers 2
+
+    .line 664
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    if-lez v0, :cond_1d
+
+    .line 665
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result p0
+
+    add-int/lit8 p0, p0, -0x1
+
+    invoke-virtual {v0, p0}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
+
+    move-result-object p0
+
+    check-cast p0, Ljava/lang/Integer;
+
+    invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I
+
+    move-result p0
+
+    return p0
+
+    :cond_1d
+    const/4 p0, -0x1
+
+    return p0
+.end method
+
+.method private p()I
+    .registers 2
+
+    .line 672
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    if-lez v0, :cond_1d
+
+    .line 673
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result p0
+
+    add-int/lit8 p0, p0, -0x1
+
+    invoke-virtual {v0, p0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object p0
+
+    check-cast p0, Ljava/lang/Integer;
+
+    invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I
+
+    move-result p0
+
+    return p0
+
+    :cond_1d
+    const/4 p0, -0x1
+
+    return p0
+.end method
+
+.method private q()Lcom/duoqin/remote/fragments/FragmentBase;
+    .registers 3
+
+    .line 680
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result v0
+
+    .line 681
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    if-eqz v1, :cond_14
+
+    if-ltz v0, :cond_14
+
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    array-length v1, v1
+
+    if-ge v0, v1, :cond_14
+
+    .line 682
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object p0, p0, v0
+
+    return-object p0
+
+    :cond_14
+    const/4 p0, 0x0
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public a()V
+    .registers 1
+
+    .line 235
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->onBackPressed()V
+
+    return-void
+.end method
+
+.method public a(I)V
+    .registers 5
+
+    .line 218
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result v0
+
+    if-eq p1, v0, :cond_7
+
+    return-void
+
+    .line 221
+    :cond_7
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->o()I
+
+    move-result p1
+
+    const/4 v0, -0x1
+
+    if-eq p1, v0, :cond_13
+
+    .line 223
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    const/4 v2, 0x0
+
+    aput-object v2, v1, p1
+
+    .line 225
+    :cond_13
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result p1
+
+    if-eq p1, v0, :cond_26
+
+    .line 227
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v0, v0, p1
+
+    if-eqz v0, :cond_26
+
+    .line 228
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object p0, p0, p1
+
+    invoke-virtual {p0}, Lcom/duoqin/remote/fragments/FragmentBase;->x()V
+
+    :cond_26
+    return-void
+.end method
+
+.method public a(II)V
+    .registers 7
+
+    .line 311
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    const/4 v1, 0x4
+
+    const/4 v2, 0x0
+
+    const/4 v3, -0x1
+
+    if-eqz v0, :cond_19
+
+    if-eq p1, v3, :cond_14
+
+    .line 313
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageResource(I)V
+
+    .line 314
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    invoke-virtual {p1, v2}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    goto :goto_19
+
+    .line 316
+    :cond_14
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    invoke-virtual {p1, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    .line 320
+    :cond_19
+    :goto_19
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    if-eqz p1, :cond_2f
+
+    if-eq p2, v3, :cond_2a
+
+    .line 322
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    invoke-virtual {p1, p2}, Landroid/widget/ImageView;->setImageResource(I)V
+
+    .line 323
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    invoke-virtual {p0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    goto :goto_2f
+
+    .line 325
+    :cond_2a
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    invoke-virtual {p0, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+
+    :cond_2f
+    :goto_2f
+    return-void
+.end method
+
+.method public a(IIIIII)V
+    .registers 9
+
+    .line 262
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    if-nez v0, :cond_5
+
+    return-void
+
+    :cond_5
+    const/4 v0, -0x1
+
+    if-ne p1, v0, :cond_18
+
+    if-ne p2, v0, :cond_18
+
+    if-ne p3, v0, :cond_18
+
+    if-ne p4, v0, :cond_18
+
+    if-ne p5, v0, :cond_18
+
+    if-ne p6, v0, :cond_18
+
+    .line 269
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {v1}, Lcom/duoqin/ui/FeatureBarHelper;->b()V
+
+    goto :goto_1d
+
+    .line 271
+    :cond_18
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {v1}, Lcom/duoqin/ui/FeatureBarHelper;->a()V
+
+    .line 273
+    :goto_1d
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    if-eqz v1, :cond_69
+
+    if-ne p1, v0, :cond_2b
+
+    if-ne p2, v0, :cond_2b
+
+    .line 275
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p1}, Lcom/duoqin/ui/FeatureBarHelper;->c()V
+
+    goto :goto_39
+
+    :cond_2b
+    if-eq p1, v0, :cond_32
+
+    .line 278
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {v1, p1}, Lcom/duoqin/ui/FeatureBarHelper;->setLeftText(I)V
+
+    :cond_32
+    if-eq p2, v0, :cond_39
+
+    .line 281
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p1, p2}, Lcom/duoqin/ui/FeatureBarHelper;->setLeftIcon(I)V
+
+    :cond_39
+    :goto_39
+    if-ne p3, v0, :cond_43
+
+    if-ne p4, v0, :cond_43
+
+    .line 286
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p1}, Lcom/duoqin/ui/FeatureBarHelper;->d()V
+
+    goto :goto_51
+
+    :cond_43
+    if-eq p3, v0, :cond_4a
+
+    .line 289
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p1, p3}, Lcom/duoqin/ui/FeatureBarHelper;->setCenterText(I)V
+
+    :cond_4a
+    if-eq p4, v0, :cond_51
+
+    .line 292
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p1, p4}, Lcom/duoqin/ui/FeatureBarHelper;->setCenterIcon(I)V
+
+    :cond_51
+    :goto_51
+    if-ne p5, v0, :cond_5b
+
+    if-ne p6, v0, :cond_5b
+
+    .line 297
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p0}, Lcom/duoqin/ui/FeatureBarHelper;->e()V
+
+    goto :goto_69
+
+    :cond_5b
+    if-eq p5, v0, :cond_62
+
+    .line 300
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p1, p5}, Lcom/duoqin/ui/FeatureBarHelper;->setRightText(I)V
+
+    :cond_62
+    if-eq p6, v0, :cond_69
+
+    .line 303
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p0, p6}, Lcom/duoqin/ui/FeatureBarHelper;->setRightIcon(I)V
+
+    :cond_69
+    :goto_69
+    return-void
+.end method
+
+.method public a(IIILjava/lang/String;)V
+    .registers 6
+
+    const/4 v0, 0x1
+
+    if-ne p1, v0, :cond_e
+
+    .line 731
+    iput p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    const/4 v0, 0x4
+
+    .line 732
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    .line 733
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    invoke-virtual {p0, p1, p2, p3, p4}, Lcom/duoqin/remote/fragments/FragmentAddDevice;->a(IIILjava/lang/String;)V
+
+    :cond_e
+    return-void
+.end method
+
+.method public a(ILcom/kookong/app/data/BrandList$Brand;)V
+    .registers 4
+
+    .line 724
+    iput p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    const/4 v0, 0x4
+
+    .line 725
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    .line 726
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    invoke-virtual {p0, p1, p2}, Lcom/duoqin/remote/fragments/FragmentAddDevice;->a(ILcom/kookong/app/data/BrandList$Brand;)V
+
+    return-void
+.end method
+
+.method public a(ILjava/lang/String;Ljava/lang/String;)V
+    .registers 5
+
+    const/4 v0, 0x1
+
+    if-ne p1, v0, :cond_e
+
+    .line 739
+    iput p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    const/4 v0, 0x4
+
+    .line 740
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    .line 741
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    invoke-virtual {p0, p1, p2, p3}, Lcom/duoqin/remote/fragments/FragmentAddDevice;->a(ILjava/lang/String;Ljava/lang/String;)V
+
+    :cond_e
+    return-void
+.end method
+
+.method public a(Ljava/lang/String;)V
+    .registers 3
+
+    .line 254
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->k:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_b
+
+    if-eqz p1, :cond_b
+
+    .line 255
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->k:Landroid/widget/TextView;
+
+    invoke-virtual {p0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_b
+    return-void
+.end method
+
+.method public a(Ls;)V
+    .registers 3
+
+    .line 698
+    iget v0, p1, Ls;->b:I
+
+    iput v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    const/4 v0, 0x1
+
+    .line 699
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    .line 700
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    invoke-virtual {p0, p1}, Lcom/duoqin/remote/fragments/FragmentKeyBoard;->a(Ls;)V
+
+    return-void
+.end method
+
+.method public b()Landroid/view/View;
+    .registers 1
+
+    .line 240
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->m:Landroid/view/View;
+
+    return-object p0
+.end method
+
+.method public b(I)V
+    .registers 3
+
+    .line 332
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->l:Landroid/view/View;
+
+    if-eqz v0, :cond_a
+
+    .line 333
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->l:Landroid/view/View;
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0, v0, v0, p1}, Landroid/view/View;->setPadding(IIII)V
+
+    :cond_a
+    return-void
+.end method
+
+.method public b(II)V
+    .registers 4
+
+    const/4 v0, 0x1
+
+    if-ne p1, v0, :cond_c
+
+    const/4 v0, 0x3
+
+    .line 718
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    .line 719
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->e:Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    invoke-virtual {p0, p1, p2}, Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;->a(II)V
+
+    :cond_c
+    return-void
+.end method
+
+.method public c()Landroid/view/View;
+    .registers 2
+
+    .line 245
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    if-eqz v0, :cond_b
+
+    .line 246
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {p0}, Lcom/duoqin/ui/FeatureBarHelper;->getAnchor()Landroid/view/View;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_b
+    const/4 p0, 0x0
+
+    return-object p0
+.end method
+
+.method public c(I)V
+    .registers 8
+
+    packed-switch p1, :pswitch_data_120
+
+    const/4 v0, 0x0
+
+    goto/16 :goto_d6
+
+    .line 607
+    :pswitch_6  #0x6
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->h:Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;
+
+    .line 608
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->h:Lcom/duoqin/remote/fragments/FragmentDeviceChooseCity;
+
+    goto/16 :goto_d6
+
+    .line 603
+    :pswitch_11  #0x5
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentSettings;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentSettings;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->g:Lcom/duoqin/remote/fragments/FragmentSettings;
+
+    .line 604
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->g:Lcom/duoqin/remote/fragments/FragmentSettings;
+
+    goto/16 :goto_d6
+
+    .line 585
+    :pswitch_1c  #0x4
+    iget v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_34
+
+    const/4 v1, 0x5
+
+    if-eq v0, v1, :cond_2c
+
+    .line 597
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentAddDeviceOthers;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentAddDeviceOthers;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    goto :goto_4b
+
+    .line 587
+    :cond_2c
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentAddDeviceAC;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentAddDeviceAC;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    goto :goto_4b
+
+    .line 590
+    :cond_34
+    iget v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    invoke-static {v0}, Lx;->a(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_44
+
+    .line 591
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentAddDeviceSTB;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentAddDeviceSTB;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    goto :goto_4b
+
+    .line 593
+    :cond_44
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentAddDeviceOthers;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentAddDeviceOthers;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    .line 600
+    :goto_4b
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->f:Lcom/duoqin/remote/fragments/FragmentAddDevice;
+
+    goto/16 :goto_d6
+
+    .line 581
+    :pswitch_4f  #0x3
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->e:Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    .line 582
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->e:Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    goto/16 :goto_d6
+
+    .line 577
+    :pswitch_5a  #0x2
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->d:Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;
+
+    .line 578
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->d:Lcom/duoqin/remote/fragments/FragmentDeviceTypeList;
+
+    goto/16 :goto_d6
+
+    .line 534
+    :pswitch_65  #0x1
+    iget v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->q:I
+
+    packed-switch v0, :pswitch_data_132
+
+    goto :goto_ca
+
+    .line 563
+    :pswitch_6b  #0xc
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardWaterHeater;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardWaterHeater;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 560
+    :pswitch_73  #0xb
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardAirCleaner;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardAirCleaner;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 569
+    :pswitch_7b  #0xa
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardLight;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardLight;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 551
+    :pswitch_83  #0x9
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardSLR;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardSLR;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 545
+    :pswitch_8b  #0x8
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardFan;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardFan;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 566
+    :pswitch_93  #0x7
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardPA;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardPA;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 554
+    :pswitch_9b  #0x6
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardPRO;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardPRO;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 539
+    :pswitch_a3  #0x5
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardAC;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardAC;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 557
+    :pswitch_ab  #0x4
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardDVD;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardDVD;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 548
+    :pswitch_b3  #0x3
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardBox;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardBox;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 536
+    :pswitch_bb  #0x2
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardTV;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardTV;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_ca
+
+    .line 542
+    :pswitch_c3  #0x1
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentKeyBoardSTB;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentKeyBoardSTB;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    .line 574
+    :goto_ca
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->c:Lcom/duoqin/remote/fragments/FragmentKeyBoard;
+
+    goto :goto_d6
+
+    .line 530
+    :pswitch_cd  #0x0
+    new-instance v0, Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;
+
+    invoke-direct {v0}, Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;-><init>()V
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->b:Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;
+
+    .line 531
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->b:Lcom/duoqin/remote/fragments/FragmentRegisteredDevices;
+
+    :goto_d6
+    if-eqz v0, :cond_108
+
+    .line 615
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aput-object v0, v1, p1
+
+    .line 616
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->getSupportFragmentManager()Landroid/support/v4/app/FragmentManager;
+
+    move-result-object v1
+
+    .line 617
+    invoke-virtual {v1}, Landroid/support/v4/app/FragmentManager;->beginTransaction()Landroid/support/v4/app/FragmentTransaction;
+
+    move-result-object v1
+
+    if-eqz p1, :cond_f4
+
+    const v2, 0x7f010002
+
+    const v3, 0x7f010001
+
+    const/high16 v4, 0x7f010000
+
+    const v5, 0x7f010003
+
+    .line 623
+    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/support/v4/app/FragmentTransaction;->setCustomAnimations(IIII)Landroid/support/v4/app/FragmentTransaction;
+
+    :cond_f4
+    const v2, 0x7f06001b
+
+    .line 629
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v2, v0, v3}, Landroid/support/v4/app/FragmentTransaction;->replace(ILandroid/support/v4/app/Fragment;Ljava/lang/String;)Landroid/support/v4/app/FragmentTransaction;
+
+    .line 630
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v1, v0}, Landroid/support/v4/app/FragmentTransaction;->addToBackStack(Ljava/lang/String;)Landroid/support/v4/app/FragmentTransaction;
+
+    .line 631
+    invoke-virtual {v1}, Landroid/support/v4/app/FragmentTransaction;->commit()I
+
+    .line 633
+    :cond_108
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result v0
+
+    const/4 v1, -0x1
+
+    if-eq v0, v1, :cond_11c
+
+    .line 635
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v1, v1, v0
+
+    if-eqz v1, :cond_11c
+
+    .line 636
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v0, v1, v0
+
+    invoke-virtual {v0}, Lcom/duoqin/remote/fragments/FragmentBase;->y()V
+
+    .line 639
+    :cond_11c
+    invoke-direct {p0, p1}, Lcom/duoqin/remote/activity/RemoteActivity;->e(I)V
+
+    return-void
+
+    :pswitch_data_120
+    .packed-switch 0x0
+        :pswitch_cd  #00000000
+        :pswitch_65  #00000001
+        :pswitch_5a  #00000002
+        :pswitch_4f  #00000003
+        :pswitch_1c  #00000004
+        :pswitch_11  #00000005
+        :pswitch_6  #00000006
+    .end packed-switch
+
+    :pswitch_data_132
+    .packed-switch 0x1
+        :pswitch_c3  #00000001
+        :pswitch_bb  #00000002
+        :pswitch_b3  #00000003
+        :pswitch_ab  #00000004
+        :pswitch_a3  #00000005
+        :pswitch_9b  #00000006
+        :pswitch_93  #00000007
+        :pswitch_8b  #00000008
+        :pswitch_83  #00000009
+        :pswitch_7b  #0000000a
+        :pswitch_73  #0000000b
+        :pswitch_6b  #0000000c
+    .end packed-switch
+.end method
+
+.method public d()V
+    .registers 2
+
+    .line 339
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->p:Ly;
+
+    if-eqz v0, :cond_9
+
+    .line 340
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->p:Ly;
+
+    invoke-virtual {p0}, Ly;->a()V
+
+    :cond_9
+    return-void
+.end method
+
+.method public d(I)V
+    .registers 3
+
+    .line 708
+    invoke-static {p1}, Lx;->a(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const/4 p1, 0x6
+
+    .line 709
+    invoke-virtual {p0, p1}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    goto :goto_15
+
+    :cond_b
+    const/4 v0, 0x3
+
+    .line 711
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    .line 712
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->e:Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;
+
+    const/4 v0, -0x1
+
+    invoke-virtual {p0, p1, v0}, Lcom/duoqin/remote/fragments/FragmentDeviceBrandList;->a(II)V
+
+    :goto_15
+    return-void
+.end method
+
+.method public dispatchKeyEvent(Landroid/view/KeyEvent;)Z
+    .registers 2
+
+    .line 747
+    invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public e()V
+    .registers 2
+
+    .line 689
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->m()V
+
+    const/4 v0, 0x0
+
+    .line 690
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    return-void
+.end method
+
+.method public f()V
+    .registers 2
+
+    const/4 v0, 0x5
+
+    .line 694
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    return-void
+.end method
+
+.method public g()V
+    .registers 2
+
+    const/4 v0, 0x2
+
+    .line 704
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->c(I)V
+
+    return-void
+.end method
+
+.method public onBackPressed()V
+    .registers 3
+
+    .line 199
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result v0
+
+    const/4 v1, -0x1
+
+    if-eq v0, v1, :cond_28
+
+    .line 201
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v1, v1, v0
+
+    if-eqz v1, :cond_16
+
+    .line 202
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v0, v1, v0
+
+    invoke-virtual {v0}, Lcom/duoqin/remote/fragments/FragmentBase;->f()Z
+
+    move-result v0
+
+    goto :goto_17
+
+    :cond_16
+    const/4 v0, 0x0
+
+    :goto_17
+    if-nez v0, :cond_2b
+
+    .line 205
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->n()I
+
+    move-result v0
+
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_24
+
+    .line 206
+    invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onBackPressed()V
+
+    goto :goto_2b
+
+    .line 208
+    :cond_24
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->finish()V
+
+    goto :goto_2b
+
+    .line 212
+    :cond_28
+    invoke-virtual {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->finish()V
+
+    :cond_2b
+    :goto_2b
+    return-void
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+    .registers 4
+
+    .line 104
+    invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V
+
+    .line 106
+    invoke-static {}, Lcom/duoqin/remote/app/RemoteApp;->b()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_10
+
+    const v0, 0x7f0b0001
+
+    .line 107
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->setTheme(I)V
+
+    goto :goto_15
+
+    :cond_10
+    const/high16 v0, 0x7f0b0000
+
+    .line 109
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->setTheme(I)V
+
+    .line 112
+    :goto_15
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->i()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1c
+
+    return-void
+
+    .line 116
+    :cond_1c
+    invoke-static {}, Lcom/duoqin/remote/app/RemoteApp;->b()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_29
+
+    const v0, 0x7f070001
+
+    .line 117
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->setContentView(I)V
+
+    goto :goto_2e
+
+    :cond_29
+    const/high16 v0, 0x7f070000
+
+    .line 119
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->setContentView(I)V
+
+    :goto_2e
+    const v0, 0x7f060043
+
+    .line 121
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->k:Landroid/widget/TextView;
+
+    const v0, 0x7f060002
+
+    .line 122
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->l:Landroid/view/View;
+
+    const v0, 0x7f060011
+
+    .line 123
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/duoqin/ui/FeatureBarHelper;
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    .line 124
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    if-eqz v0, :cond_56
+
+    .line 125
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->j:Lcom/duoqin/ui/FeatureBarHelper;
+
+    invoke-virtual {v0, p0}, Lcom/duoqin/ui/FeatureBarHelper;->setActivity(Landroid/app/Activity;)V
+
+    :cond_56
+    const v0, 0x7f060020
+
+    .line 127
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->m:Landroid/view/View;
+
+    const v0, 0x7f060045
+
+    .line 128
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    const v0, 0x7f060046
+
+    .line 129
+    invoke-virtual {p0, v0}, Lcom/duoqin/remote/activity/RemoteActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    .line 130
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    if-eqz v0, :cond_83
+
+    .line 131
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->n:Landroid/widget/ImageView;
+
+    new-instance v1, Lcom/duoqin/remote/activity/RemoteActivity$1;
+
+    invoke-direct {v1, p0}, Lcom/duoqin/remote/activity/RemoteActivity$1;-><init>(Lcom/duoqin/remote/activity/RemoteActivity;)V
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 141
+    :cond_83
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    if-eqz v0, :cond_91
+
+    .line 142
+    iget-object v0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->o:Landroid/widget/ImageView;
+
+    new-instance v1, Lcom/duoqin/remote/activity/RemoteActivity$2;
+
+    invoke-direct {v1, p0}, Lcom/duoqin/remote/activity/RemoteActivity$2;-><init>(Lcom/duoqin/remote/activity/RemoteActivity;)V
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    :cond_91
+    if-eqz p1, :cond_a2
+
+    const-string v0, "RemoteActivity"
+
+    const-string v1, "savedInstanceState not null"
+
+    .line 154
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v0, "state_fragment_stack"
+
+    .line 155
+    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getIntegerArrayList(Ljava/lang/String;)Ljava/util/ArrayList;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    .line 157
+    :cond_a2
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    if-eqz p1, :cond_d5
+
+    iget-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {p1}, Ljava/util/ArrayList;->isEmpty()Z
+
+    move-result p1
+
+    if-eqz p1, :cond_af
+
+    goto :goto_d5
+
+    .line 161
+    :cond_af
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->l()V
+
+    const-string p1, "RemoteActivity"
+
+    .line 162
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "onCreate, has saved state, fragments stack is "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", to get fragments: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_df
+
+    .line 158
+    :cond_d5
+    :goto_d5
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->k()V
+
+    const-string p1, "RemoteActivity"
+
+    const-string v0, "onCreate, has no saved state, to set fragments as normal"
+
+    .line 159
+    invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 165
+    :goto_df
+    invoke-static {}, Lw;->a()Lw;
+
+    move-result-object p1
+
+    const-string v0, "shared_pref_statement_confirmed"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p1, v0, v1}, Lw;->a(Ljava/lang/String;Z)Z
+
+    move-result p1
+
+    if-nez p1, :cond_ef
+
+    .line 167
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->j()V
+
+    .line 170
+    :cond_ef
+    sget p1, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v0, 0x1d
+
+    if-lt p1, v0, :cond_fc
+
+    .line 171
+    new-instance p1, Ly;
+
+    invoke-direct {p1, p0}, Ly;-><init>(Landroid/content/Context;)V
+
+    iput-object p1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->p:Ly;
+
+    :cond_fc
+    return-void
+.end method
+
+.method protected onDestroy()V
+    .registers 1
+
+    .line 177
+    invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onDestroy()V
+
+    return-void
+.end method
+
+.method public onKeyDown(ILandroid/view/KeyEvent;)Z
+    .registers 5
+
+    .line 752
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result v0
+
+    .line 753
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v1, v1, v0
+
+    if-eqz v1, :cond_1f
+
+    .line 754
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v0, v1, v0
+
+    invoke-virtual {v0, p1, p2}, Lcom/duoqin/remote/fragments/FragmentBase;->a(ILandroid/view/KeyEvent;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1d
+
+    invoke-super {p0, p1, p2}, Landroid/support/v4/app/FragmentActivity;->onKeyDown(ILandroid/view/KeyEvent;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_1b
+
+    goto :goto_1d
+
+    :cond_1b
+    const/4 p0, 0x0
+
+    goto :goto_1e
+
+    :cond_1d
+    :goto_1d
+    const/4 p0, 0x1
+
+    :goto_1e
+    return p0
+
+    .line 756
+    :cond_1f
+    invoke-super {p0, p1, p2}, Landroid/support/v4/app/FragmentActivity;->onKeyDown(ILandroid/view/KeyEvent;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public onKeyUp(ILandroid/view/KeyEvent;)Z
+    .registers 5
+
+    .line 762
+    invoke-direct {p0}, Lcom/duoqin/remote/activity/RemoteActivity;->p()I
+
+    move-result v0
+
+    .line 763
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v1, v1, v0
+
+    if-eqz v1, :cond_1f
+
+    .line 764
+    iget-object v1, p0, Lcom/duoqin/remote/activity/RemoteActivity;->i:[Lcom/duoqin/remote/fragments/FragmentBase;
+
+    aget-object v0, v1, v0
+
+    invoke-virtual {v0, p1, p2}, Lcom/duoqin/remote/fragments/FragmentBase;->b(ILandroid/view/KeyEvent;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1d
+
+    invoke-super {p0, p1, p2}, Landroid/support/v4/app/FragmentActivity;->onKeyUp(ILandroid/view/KeyEvent;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_1b
+
+    goto :goto_1d
+
+    :cond_1b
+    const/4 p0, 0x0
+
+    goto :goto_1e
+
+    :cond_1d
+    :goto_1d
+    const/4 p0, 0x1
+
+    :goto_1e
+    return p0
+
+    .line 766
+    :cond_1f
+    invoke-super {p0, p1, p2}, Landroid/support/v4/app/FragmentActivity;->onKeyUp(ILandroid/view/KeyEvent;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method protected onSaveInstanceState(Landroid/os/Bundle;)V
+    .registers 3
+
+    .line 192
+    invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->onSaveInstanceState(Landroid/os/Bundle;)V
+
+    const-string v0, "state_fragment_stack"
+
+    .line 193
+    iget-object p0, p0, Lcom/duoqin/remote/activity/RemoteActivity;->a:Ljava/util/ArrayList;
+
+    invoke-virtual {p1, v0, p0}, Landroid/os/Bundle;->putIntegerArrayList(Ljava/lang/String;Ljava/util/ArrayList;)V
+
+    return-void
+.end method
+
+.method protected onStart()V
+    .registers 1
+
+    .line 182
+    invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onStart()V
+
+    return-void
+.end method
+
+.method protected onStop()V
+    .registers 1
+
+    .line 187
+    invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onStop()V
+
+    return-void
+.end method
