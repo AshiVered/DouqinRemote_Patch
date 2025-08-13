@@ -3,3 +3,4 @@ In the Qin F22Pro, there is a built-in IR remote app (for example, for air condi
 
 So I decided to bypass this protection and modify the app so that it works in any case.
  Full documentation is available on my blog (currently in Hebrew only).
+https://aiv-dev.com/he-IL/2025/07/08/F22Pro_IRpatch/
